@@ -10,6 +10,9 @@ import Divider from '@/components/divider/Divider';
 import Link from 'next/link';
 
 import LogoPath from '@/assets/colorful.svg';
+import { toast } from 'react-toastify';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '@/firebase/firebase';
 
 const RegisterClient = () => {
     const [email, setEmail] = useState('');
