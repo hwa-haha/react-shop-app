@@ -27,7 +27,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "src/app/(auth)/reset/ResetClient.jsx", "src/components/slider/SliderData.js"  ],
+, "src/app/(auth)/reset/ResetClient.jsx", "src/components/slider/SliderData.js", "src/app/admin/add-product/AddProductClient.jsx"  ],
   "exclude": [
     "node_modules"
   ]
