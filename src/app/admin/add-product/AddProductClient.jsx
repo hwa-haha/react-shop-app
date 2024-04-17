@@ -11,8 +11,6 @@ import { toast } from 'react-toastify';
 import { Timestamp, addDoc, collection } from 'firebase/firestore';
 import { db } from '@/firebase/firebase';
 
-
-
 export const categories = [
     { id: 1, name: "Laptop" },
     { id: 2, name: "Electronics" },
