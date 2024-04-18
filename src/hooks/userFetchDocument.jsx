@@ -1,9 +1,32 @@
-import React from 'react'
+import { db } from '@/firebase/firebase';
+import { DocumentData, doc, getDoc } from 'firebase/firestore';
+import React, { useCallback, useEffect, useState } from 'react'
+import { toast } from 'react-toastify';
 
-const userFetchDocument = () => {
-  return (
-    <div>userFetchDocument</div>
-  )
+const useFetchDocument = (collectionName, documentID) => {
+  const [document, setDocument] = useState<DocumentData | null>(null);
+
+  const getDocument = useCallback(async () => {
+    const docRef = doc(db, collectionName, documentID);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      const obj = {
+        id: documentID,
+        ...docSnap.data()
+      }
+
+      setDocument(obj);
+    } else {
+      toast.error("Document not found");
+    }
+  }, [collectionName, documentID])
+
+  useEffect(() => {
+    getDocument();
+  }, [getDocument])
+
+  return { document }
 }
 
-export default userFetchDocument
+export default useFetchDocument
