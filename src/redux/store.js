@@ -10,8 +10,8 @@ const rootReducer = combineReducers({
     auth: authReducer,
     product: productReducer,
     filter: filterReducer,
-    // cart: cartReducer,
-    // checkout: checkoutReducer,
+    cart: cartReducer,
+    checkout: checkoutReducer,
     // orders: orderReducer
 })
 
