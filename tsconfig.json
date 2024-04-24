@@ -27,7 +27,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "src/app/(auth)/reset/ResetClient.jsx", "src/components/slider/SliderData.js", "src/app/admin/add-product/AddProductClient.jsx", "src/app/review-product/[id]/ReviewProductClient.jsx", "src/app/product-details/[id]/ProductDetailsClient.jsx", "src/app/cart/CartClient.jsx", "src/app/(checkout)/checkout-address/CheckoutAddressClient.jsx", "src/app/(checkout)/checkout/CheckoutClient.jsx", "src/app/(checkout)/checkout-success/page.jsx"  ],
+, "src/app/(auth)/reset/ResetClient.jsx", "src/components/slider/SliderData.js", "src/app/admin/add-product/AddProductClient.jsx", "src/app/review-product/[id]/ReviewProductClient.jsx", "src/app/product-details/[id]/ProductDetailsClient.jsx", "src/app/cart/CartClient.jsx", "src/app/(checkout)/checkout-address/CheckoutAddressClient.jsx", "src/app/(checkout)/checkout/CheckoutClient.jsx", "src/app/(checkout)/checkout-success/page.jsx", "src/app/(order)/order-history/OrderHistoryClient.jsx", "src/app/(order)/order-history/page.jsx"  ],
   "exclude": [
     "node_modules"
   ]
