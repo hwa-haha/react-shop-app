@@ -12,15 +12,15 @@ const rootReducer = combineReducers({
     filter: filterReducer,
     cart: cartReducer,
     checkout: checkoutReducer,
-    // orders: orderReducer
+    orders: orderReducer
 })
 
 const store = configureStore({
     reducer: rootReducer,
-    // middleware: (getDefaultMiddleware) =>
-    //     getDefaultMiddleware({
-    //         serializableCheck: false
-    //     })
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+            serializableCheck: false
+        })
 });
 
 export default store;
