@@ -8,7 +8,7 @@ import Loader from '@/components/loader/Loader';
 import Image from 'next/image';
 import ChangeOrderStatus from '@/components/changeOrderStatus/ChangeOrderStatus';
 import priceFormat from '@/utils/priceFormat';
-import { ICartItem, IOrder } from '@/types';
+
 const OrderDetailsClient = () => {
 
     const { id } = useParams();
@@ -87,6 +87,8 @@ const OrderDetailsClient = () => {
                                 })}
                             </tbody>
                         </table>
+                        <ChangeOrderStatus order={order} id={id} />
+
                     </>
                 )
 
