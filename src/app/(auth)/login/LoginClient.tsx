@@ -29,7 +29,7 @@ const LoginClient = () => {
         router.push('/');
     }
 
-    const loginUser = (e) => {
+    const loginUser = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         toast.info('성공!')
         setIsLoading(true);
@@ -59,7 +59,7 @@ const LoginClient = () => {
             })
     }
 
-   return (
+    return (
         <>
             {isLoading && <Loader />}
             <section className={styles.page}>
@@ -100,6 +100,7 @@ const LoginClient = () => {
                                 onChange={(e) => setIsAutoLogin(e.target.checked)}
                             />
 
+
                             <Link href={'/reset'} className={styles.findLink}>
                                 비밀번호 수정하기
                                 <svg width="11"
@@ -112,7 +113,10 @@ const LoginClient = () => {
                                     <path d="M1.5 1L9.5 9L1.5 17" stroke="#0074E9" strokeWidth="2" />
                                 </svg>
                             </Link>
+
+
                         </div>
+
                         <div className={styles.buttonGroup}>
                             {/* Button */}
                             <Button
@@ -121,7 +125,9 @@ const LoginClient = () => {
                             >
                                 로그인
                             </Button>
+
                             <Divider />
+
                             <Button
                                 width="100%"
                                 secondary
@@ -131,13 +137,16 @@ const LoginClient = () => {
                                 </Link>
                             </Button>
                             <Divider />
+
                             <div>
                                 {/* Button */}
+
                                 <Button
                                     onClick={signInWithGoogle}
                                 >
                                     구글 로그인
                                 </Button>
+
                             </div>
                         </div>
                     </form>
