@@ -1,4 +1,4 @@
-import { combineReducers, configureStore } from '@redux/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import authReducer from './slice/authSlice';
 import productReducer from './slice/productSlice';
 import filterReducer from './slice/filterSlice';
@@ -22,5 +22,8 @@ const store = configureStore({
             serializableCheck: false
         })
 });
+
+
+export type RootState = ReturnType<typeof store.getState>;
 
 export default store;
