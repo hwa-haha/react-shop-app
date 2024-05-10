@@ -2,11 +2,19 @@ import { IProduct } from "@/types";
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 
+interface IFilterState {
+    filteredProducts: IProduct[];
+}
+
+const initialState: IFilterState = {
+    filteredProducts: []
+}
+
 const filterSlice = createSlice({
     name: 'filter',
     initialState,
     reducers: {
-        FILTER_BY_CATEGORY: (state, action) => {
+        FILTER_BY_CATEGORY: (state, action: { payload: { products: IProduct[], category: string } }) => {
             const { products, category } = action.payload;
             let tempProducts = [];
             if (category === "All") {
@@ -18,7 +26,7 @@ const filterSlice = createSlice({
             }
             state.filteredProducts = tempProducts
         },
-        FILTER_BY_BRAND: (state, action) => {
+        FILTER_BY_BRAND: (state, action: { payload: { products: IProduct[], brand: string } }) => {
             const { products, brand } = action.payload;
             console.log('brand', brand);
             let tempProducts = [];
@@ -31,7 +39,7 @@ const filterSlice = createSlice({
             }
             state.filteredProducts = tempProducts
         },
-        FILTER_BY_PRICE: (state, action) => {
+        FILTER_BY_PRICE: (state, action: { payload: { products: IProduct[], price: number } }) => {
             const { products, price } = action.payload;
             let tempProducts = [];
 
@@ -40,7 +48,7 @@ const filterSlice = createSlice({
             state.filteredProducts = tempProducts;
 
         },
-        FILTER_BY: (state, action) => {
+        FILTER_BY: (state, action: { payload: { products: IProduct[], price: number, brand: string, category: string } }) => {
             const { products, price, brand, category } = action.payload;
             let tempProducts = [];
 
@@ -64,9 +72,9 @@ const filterSlice = createSlice({
             state.filteredProducts = tempProducts;
 
         },
-        SORT_PRODUCTS: (state, action) => {
+        SORT_PRODUCTS: (state, action: { payload: { products: IProduct[], sort: string } }) => {
             const { products, sort } = action.payload;
-            let tempProducts = [];
+            let tempProducts: IProduct[] = [];
             if (sort === 'latest') {
                 tempProducts = products;
             }
@@ -86,7 +94,7 @@ const filterSlice = createSlice({
             state.filteredProducts = tempProducts
 
         },
-        FILTER_BY_SEARCH: (state, action) => {
+        FILTER_BY_SEARCH: (state, action: { payload: { products: IProduct[], search: string } }) => {
 
             const { products, search } = action.payload;
 
@@ -111,6 +119,6 @@ export const {
     FILTER_BY
 } = filterSlice.actions;    
 
-export const selectFilteredProducts = (state) => state.filter.filteredProducts;
+export const selectFilteredProducts = (state: RootState) => state.filter.filteredProducts;
 
 export default filterSlice.reducer;
