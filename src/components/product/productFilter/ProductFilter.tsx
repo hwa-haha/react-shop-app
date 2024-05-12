@@ -22,7 +22,7 @@ const ProductFilter = () => {
         ...new Set(products.map((product) => product.category))
     ]
 
-    const filterCategories = (category) => {
+    const filterCategories = (category: string) => {
         setCategory(category);
     }
 
