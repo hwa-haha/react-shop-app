@@ -4,9 +4,9 @@ import { DocumentData, collection, onSnapshot, orderBy, query } from 'firebase/f
 import React, { useCallback, useEffect, useState } from 'react'
 import { toast } from 'react-toastify';
 
-const useFetchCollection = (collectionName) => {
+const useFetchCollection = (collectionName: string) => {
 
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<DocumentData[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const getCollection = useCallback(() => {
