@@ -1,5 +1,19 @@
 import React from 'react'
 import styles from './Tooltip.module.scss';
+import classNames from 'classnames';
+
+interface ITooltipProps {
+  top?: number;
+  right?: number;
+  bottom?: number;
+  left?: number;
+  color?: string;
+  bgColor?: string;
+  orientation?: 'top' | 'right' | 'bottom' | 'left';
+  message: string;
+  [x: string]: any;
+}
+
 
 const Tooltip = ({
   top = 0,
@@ -11,7 +25,7 @@ const Tooltip = ({
   orientation = 'top',
   message,
   ...restProps
-}) => {
+}: ITooltipProps) => {
 
   const style = {
     top,
@@ -22,7 +36,7 @@ const Tooltip = ({
     backgroundColor: bgColor
   }
 
-  const setOrientationClass = (type) => {
+  const setOrientationClass = (type: string) => {
     switch (type) {
       case 'top':
         return styles.orientationTop
@@ -39,13 +53,13 @@ const Tooltip = ({
 
   return (
     <span
-    role="tooltip"
-    style={style}
-    className={classNames(styles.tooltip, setOrientationClass(orientation))}
-    {...restProps}
-  >
-    {message}
-  </span>
+      role="tooltip"
+      style={style}
+      className={classNames(styles.tooltip, setOrientationClass(orientation))}
+      {...restProps}
+    >
+      {message}
+    </span>
   )
 }
 

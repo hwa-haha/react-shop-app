@@ -8,7 +8,17 @@ import { Rating } from 'react-simple-star-rating';
 import rocketBadgeIcon from '@/assets/badge-rocket.svg';
 import useFetchDocuments from '@/hooks/useFetchDocuments';
 
-const ProductItem = ({ id, name, price, imageURL, category, brand }) => {
+interface IProductItemProps {
+  id: string;
+  name: string;
+  price: number;
+  imageURL: string;
+  category: string;
+  brand: string;
+}
+
+
+const ProductItem = ({ id, name, price, imageURL, category, brand }: IProductItemProps) => {
 
   // const { documents } = useFetchDocuments('reviews', ["productID", "==", id])
 
@@ -21,7 +31,7 @@ const ProductItem = ({ id, name, price, imageURL, category, brand }) => {
   // const rating = productRating / documents.length;
 
 
-  const shortenText = (text, n) => {
+  const shortenText = (text: string, n: number) => {
     if (text.length > n) {
       const shortenedText = text.substring(0, n).concat('...');
       return shortenedText

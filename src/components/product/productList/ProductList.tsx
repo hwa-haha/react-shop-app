@@ -31,8 +31,8 @@ const ProductList = () => {
 
   console.log('currentProducts', currentProducts);
 
-  const isRadioSelected = (value) => sort === value;
-  const handleRadioClick = (e) => setSort(e.target.value);
+  const isRadioSelected = (value: string) => sort === value;
+  const handleRadioClick = (e: ChangeEvent<HTMLInputElement>) => setSort(e.target.value);
 
   return (
     <div className={styles.productList}>
@@ -88,7 +88,7 @@ const ProductList = () => {
         )
           :
           <>
-            {currentProducts.map((productList) => {
+            {currentProducts.map((product: IProduct) => {
               return (
                 <div key={product.id}>
                   <ProductItem  {...product} />

@@ -10,15 +10,19 @@ import Button from '../button/Button';
 import { IOrder } from '@/types';
 
 
+interface IChangeOrderStatusProps {
+  order: IOrder;
+  id: string;
+}
 
-const ChangeOrderStatus = ({ order, id }) => {
+const ChangeOrderStatus = ({ order, id }: IChangeOrderStatusProps) => {
 
   const router = useRouter();
 
   const [status, setStatus] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const editOrder = (e) => {
+  const editOrder = (e: FormEvent<HTMLFormElement>, id: string) => {
     e.preventDefault();
 
     const orderData = {

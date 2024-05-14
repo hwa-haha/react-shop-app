@@ -6,7 +6,13 @@ import showPath from './images/shape=show.svg';
 import hidePath from './images/shape=hide.svg';
 import Image from 'next/image';
 
-const Icon = ({ type, alt = '', ...restProps }) => {
+interface IIconProps {
+  type: 'letter' | 'lock' | 'show' | 'hide';
+  alt?: string;
+  [x: string]: any;
+}
+
+const Icon = ({ type, alt = '', ...restProps }: IIconProps) => {
   let src = '';
 
   switch (type) {
