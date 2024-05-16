@@ -18,7 +18,7 @@ const OrderDetailsClient = () => {
     const { document: order } = useFetchDocument("orders", id);
 
     const router = useRouter();
-    const handleClick = (id) => {
+    const handleClick = (id: string) => {
         router.push(`/review-product/${id}`);
     }
 
@@ -64,7 +64,7 @@ const OrderDetailsClient = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {order.cartItems.map((cartItem, index) => {
+                                    {order.cartItems.map((cartItem: ICartItem, index: number) => {
                                         const { id, name, price, imageURL, cartQuantity } = cartItem;
                                         return (
                                             <tr key={id}>

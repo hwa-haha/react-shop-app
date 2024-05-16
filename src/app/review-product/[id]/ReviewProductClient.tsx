@@ -27,7 +27,7 @@ const ReviewProductClient = () => {
 
   const { document: product } = useFetchDocument("products", id);
 
-  const submitReview = (e) => {
+  const submitReview = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const today = new Date();

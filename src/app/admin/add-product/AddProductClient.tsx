@@ -11,6 +11,8 @@ import { toast } from 'react-toastify';
 import { Timestamp, addDoc, collection } from 'firebase/firestore';
 import { db } from '@/firebase/firebase';
 
+
+
 export const categories = [
     { id: 1, name: "Laptop" },
     { id: 2, name: "Electronics" },
@@ -43,12 +45,12 @@ const AddProductClient = () => {
     const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
 
-    const handleInputChange = (e) => {
+    const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
         setProduct({ ...product, [name]: value });
     }
 
-    const handleImageChange = (e) => {
+    const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
         if (!e.target.files) return;
         
         const file = e.target.files[0];
@@ -73,7 +75,7 @@ const AddProductClient = () => {
         )
     }
 
-    const addProduct = (e) => {
+    const addProduct = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setIsLoading(true);
 

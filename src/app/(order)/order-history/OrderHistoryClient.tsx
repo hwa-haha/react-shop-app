@@ -1,45 +1,45 @@
 'use client'
 import React, { useEffect } from 'react'
-import styles from './Orders.module.scss';
+import styles from './OrderHistory.module.scss';
 import useFetchCollection from '@/hooks/useFetchCollection';
 import { useDispatch, useSelector } from 'react-redux';
-import { useRouter } from 'next/navigation';
 import { STORE_ORDERS, selectOrderHistory } from '@/redux/slice/orderSlice';
+import { selectUserID } from '@/redux/slice/authSlice';
 import Heading from '@/components/heading/Heading';
 import Loader from '@/components/loader/Loader';
-import priceFormat from '@/utils/priceFormat';
 import { formatTime } from '@/utils/dayjs';
+import priceFormat from '@/utils/priceFormat';
+import { useRouter } from 'next/navigation';
 
-const OrdersClient = () => {
+const OrderHistoryClient = () => {
 
-
-    const { data, isLoading } = useFetchCollection("orders");
-
+    const { data, isLoading } = useFetchCollection('orders');
     const dispatch = useDispatch();
     const router = useRouter();
 
-    const orders = useSelector(selectOrderHistory);
-
     useEffect(() => {
         dispatch(STORE_ORDERS(data));
-    }, [dispatch, data])
+    }, [dispatch, data]);
 
-    const handleClick = (id) => {
-        router.push(`/admin/order-details/${id}`)
+    const orders = useSelector(selectOrderHistory);
+    const userID = useSelector(selectUserID);
+
+    const filteredOrders = orders.filter((order) => order.userID === userID);
+
+
+    const handleClick = (id: string) => {
+        router.push(`/order-details/${id}`)
     }
 
-
     return (
-        <div className={styles.order}>
-            <Heading title="주문 내역" subtitle="주문 상태 변경" />
-
-            <>
-                {isLoading && <Loader basic />}
-                <div className={styles.table}>
-                    {orders.length === 0 ? (
+        <section className={styles.order}>
+            <Heading title="주문 목록" />
+            {isLoading && <Loader />}
+            <div className={styles.table}>
+                {
+                    filteredOrders.length === 0 ? (
                         <p>주문 목록이 없습니다.</p>
-                    )
-                        :
+                    ) :
                         (
                             <table>
                                 <thead>
@@ -52,7 +52,7 @@ const OrdersClient = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {orders.map((order, index) => {
+                                    {filteredOrders.map((order, index) => {
                                         const {
                                             id,
                                             orderDate,
@@ -92,15 +92,11 @@ const OrdersClient = () => {
                                     })}
                                 </tbody>
                             </table>
-                        )}
-                </div>
-
-
-            </>
-
-
-        </div>
+                        )
+                }
+            </div>
+        </section>
     )
 }
 
-export default OrdersClient
+export default OrderHistoryClient

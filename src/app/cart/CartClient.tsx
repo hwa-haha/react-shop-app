@@ -23,15 +23,15 @@ const CartClient = () => {
 
     const isLoggedIn = useSelector(selectIsLoggedIn);
 
-    const increaseCart = (cart) => {
+    const increaseCart = (cart: ICartItem) => {
         dispatch(ADD_TO_CART(cart));
     }
 
-    const decreaseCart = (cart) => {
+    const decreaseCart = (cart: ICartItem) => {
         dispatch(DECREASE_CART(cart));
     }
 
-    const removeFromCart = (cart) => {
+    const removeFromCart = (cart: ICartItem) => {
         dispatch(REMOVE_FROM_CART(cart));
     };
 

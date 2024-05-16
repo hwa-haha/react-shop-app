@@ -25,12 +25,12 @@ const EditProductClient = () => {
         setProduct(document);
     }, [document])
 
-    const handleInputChange = (e) => {
+    const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         setProduct({ ...product, [name]: value });
     }
 
-    const handleImageChange = (e) => {
+    const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
         if (!e.target.files) return;
 
         const file = e.target.files[0];
@@ -55,7 +55,7 @@ const EditProductClient = () => {
         )
     }
 
-    const editProduct = (e) => {
+    const editProduct = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setIsLoading(true);
 
