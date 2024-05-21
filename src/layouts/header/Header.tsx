@@ -22,7 +22,7 @@ const Header = () => {
       if (user) {
 
         if (user.displayName === null) {
-          const u1 = user.email.substring(0, user.email.indexOf('@'));
+          const u1 = user.email!.substring(0, user.email!.indexOf('@'));
           const uName = u1.charAt(0).toUpperCase() + u1.slice(1);
           setDisplayName(uName);
         } else {
